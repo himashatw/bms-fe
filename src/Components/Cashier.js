@@ -2,6 +2,39 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Cashier() {
+  // useStates for inputs
+  const [accountNumber, setAccountNumber] = useState("");
+  const [withdrawAmount, setWithdrawAmount] = useState("");
+  const [depositAmount, setDepositAmount] = useState("");
+  const [transactionAmount, setTransactionAmount] = useState("");
+
+  // useState for detailsObject
+  const [accountDetails, setAccountDetails] = useState(null);
+
+  // useState for transaction history
+  const [transcationsList, setTransactionList] = useState([]);
+
+  // function for search account details
+  const searchButtonHandler = () => {
+    console.log(accountNumber);
+    // e.preventDefault();
+  };
+
+  // function for withdrawals
+  const withdrawalsHandler = () => {
+    console.log(withdrawAmount);
+  };
+
+  // function for deposits
+  const depositHandler = () => {
+    console.log(depositAmount);
+  };
+
+  // function for transcations
+  const transactionHandler = () => {
+    console.log(transactionAmount);
+  };
+
   return (
     <div className="container" style={{ margin: "5% auto" }}>
       <center>
@@ -18,28 +51,37 @@ function Cashier() {
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter account ID"
-              // value={employeeName}
-              // onChange={(event) => setEmployeeName(event.target.value)}
+              value={accountNumber}
+              onChange={(event) => setAccountNumber(event.target.value)}
             />
             <button
               type="submit"
               className="btn btn-primary"
               style={{ marginLeft: "5px" }}
-              // onClick={(e) => onSubmitHandler(e)}
+              onClick={searchButtonHandler}
             >
               Search
             </button>
           </div>
+          <label>Account Details</label>
           <div
             style={{
               border: "1px solid black",
               marginTop: "5%",
             }}
           >
-            <h4>Details here</h4>
-            <h4>Details here</h4>
-            <h4>Details here</h4>
-            <h4>Details here</h4>
+            {accountDetails !== null ? (
+              <>
+                {/* accountDetails.totalAmount [like this]*/}
+                {/* accountDetails.totalAmount [like this]*/}
+                {/* accountDetails.totalAmount [like this]*/}
+              </>
+            ) : (
+              <>
+                {" "}
+                <h5>Please enter the account number</h5>
+              </>
+            )}
           </div>
         </div>
 
@@ -54,14 +96,14 @@ function Cashier() {
                 id="exampleInputEmail23"
                 aria-describedby="emailHelp"
                 placeholder="Enter amount"
-                // value={employeeName}
-                // onChange={(event) => setEmployeeName(event.target.value)}
+                value={withdrawAmount}
+                onChange={(event) => setWithdrawAmount(event.target.value)}
               />
               <button
                 type="submit"
                 className="btn btn-success"
                 style={{ marginLeft: "5px" }}
-                // onClick={(e) => onSubmitHandler(e)}
+                onClick={withdrawalsHandler}
               >
                 Withdraw
               </button>
@@ -75,14 +117,14 @@ function Cashier() {
                   id="exampleInputEmail2r3"
                   aria-describedby="emailHelp"
                   placeholder="Enter amount"
-                  // value={employeeName}
-                  // onChange={(event) => setEmployeeName(event.target.value)}
+                  value={depositAmount}
+                  onChange={(event) => setDepositAmount(event.target.value)}
                 />
                 <button
                   type="submit"
                   className="btn btn-success"
                   style={{ marginLeft: "5px" }}
-                  // onClick={(e) => onSubmitHandler(e)}
+                  onClick={depositHandler}
                 >
                   Deposit
                 </button>
@@ -96,14 +138,16 @@ function Cashier() {
                     id="exampleInputEmailwe2r3"
                     aria-describedby="emailHelp"
                     placeholder="Enter amount"
-                    // value={employeeName}
-                    // onChange={(event) => setEmployeeName(event.target.value)}
+                    value={transactionAmount}
+                    onChange={(event) =>
+                      setTransactionAmount(event.target.value)
+                    }
                   />
                   <button
                     type="submit"
                     className="btn btn-success"
                     style={{ marginLeft: "5px" }}
-                    // onClick={(e) => onSubmitHandler(e)}
+                    onClick={transactionHandler}
                   >
                     Transfer
                   </button>
