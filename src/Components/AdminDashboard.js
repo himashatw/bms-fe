@@ -5,15 +5,17 @@ function AdminDashboard() {
   const [employeeName, setEmployeeName] = useState("");
   const [employeeEmail, setEmployeeEmail] = useState("");
   const [employeePassword, setEmployeePassword] = useState("");
-  const [employeeType, setEmployeeType] = useState("");
+  const [employeeType, setEmployeeType] = useState("Bank Officer");
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     // POST code here
     axios
-      .post("/addUser", {
-        userName: "Fred",
-        userEmail: "Flintstone@gmail.com",
+      .post("http://localhost:PORTNO/url", {
+        employeeName,
+        employeeEmail,
+        employeePassword,
+        employeeType,
       })
       .then(function (response) {
         if (response.status === 200 || response.status === 201) {
@@ -79,6 +81,7 @@ function AdminDashboard() {
             id="customRadioInline1"
             name="customRadioInline1"
             className="custom-control-input"
+            checked
             onClick={() => setEmployeeType("Bank Officer")}
           />
           <label className="custom-control-label" htmlFor="customRadioInline1">
