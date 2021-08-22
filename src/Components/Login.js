@@ -10,13 +10,15 @@ function Login(props) {
     console.log("clicked" + email + " " + password);
 
     await axios
-      .post("/url", {
+      .post("http://localhost:PORTNO/url", {
         email,
         password,
       })
       .then((response) => {
         if (response.status === 200) {
           //redirect part
+          console.log(response.data);
+          // if(response.data.)
           // props.history.push("/cashier");
         }
       })

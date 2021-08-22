@@ -10,7 +10,7 @@ function AdminDashboard() {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     // POST code here
-    axios
+    await axios
       .post("http://localhost:PORTNO/url", {
         employeeName,
         employeeEmail,
